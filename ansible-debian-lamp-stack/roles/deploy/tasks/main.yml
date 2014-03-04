@@ -1,0 +1,5 @@
+- name: Checkout code ({{repo}})
+  git: repo={{repo}} dest=/var/www/{{host}} version={{branch}}
+
+- name: Change ownership of files
+  file: path=/var/www/{{host}} recurse=true owner=www-data group=www-data

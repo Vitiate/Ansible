@@ -1,0 +1,7 @@
+- hosts: linux
+  remote_user: root
+  tasks:
+  - name: updates the cache
+    apt: update_cache=yes
+  - name: perform a apt-get upgrade
+    apt: upgrade=dist dpkg_options='force-confold,force-confdef'

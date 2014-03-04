@@ -1,0 +1,8 @@
+# This playbook installs a rsa pub key onto all of the hosts in the hosts file
+# ansible-playbook register-pubkey.yml --ask-pass --extra-vars user=myremoteuser
+- hosts: all
+  remote_user: '{{ user }}'
+
+  tasks:
+  - name: Add RSA key to the remote host
+    authorized_key: user='{{ user }}' key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
