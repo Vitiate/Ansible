@@ -1,0 +1,11 @@
+- hosts: webserver
+  remote_user: root
+  tasks:
+    - name: copy files
+      copy: src=./apache.conf dest=/etc/rsyslog.d/apache.conf
+      copy: src=./mysql.conf dest=/etc/rsyslog.d/mysql.conf
+      notify:
+        - restart rsyslog
+  handlers:
+    - name: restart rsyslog
+      service: name=rsyslog state=restarted

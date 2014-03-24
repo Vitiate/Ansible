@@ -2,4 +2,4 @@
   hosts: logstash
   roles:
     - ansible-logstash
-    - ansible-elasticsearch
+    - ansible-elasticsearch-deb

@@ -1,0 +1,10 @@
+- hosts: nginx
+  remote_user: root
+  tasks:
+    - name: copy files
+      copy: src=./nginx.conf dest=/etc/rsyslog.d/nginx.conf
+      notify:
+        - restart rsyslog
+  handlers:
+    - name: restart rsyslog
+      service: name=rsyslog state=restarted
